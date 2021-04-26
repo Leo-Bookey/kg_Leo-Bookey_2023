@@ -14,6 +14,9 @@ var finalWords = [];
 * @param  {integer} rawInt  integer to be converted
 */
 function integerToWord(rawInt) {
+  if (!isPositiveInteger(rawInt)) {
+    throw new Error("Please only enter positive integers");
+  }
   var completeWord = '';
   while (rawInt != 0) {
     completeWord = equivalents[rawInt % 10] + completeWord;
@@ -22,6 +25,15 @@ function integerToWord(rawInt) {
   finalWords.push(completeWord);
 }
 
+/**
+* Function that checks if input is positive integer
+* @param  {integer} n  integer to be checked
+* @return {boolean}    whether integer is positive integer or not
+* @source https://stackoverflow.com/questions/10834796/validate-that-a-string-is-a-positive-integer/10834843
+*/
+function isPositiveInteger(n) {
+    return n >>> 0 === parseFloat(n);
+}
 
 myArgs.forEach(integerToWord);
 process.stdout.write(finalWords.join(', '));
