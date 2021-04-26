@@ -5,26 +5,24 @@
 * @author Leo Bookey
 */
 
-
 var myArgs = process.argv.slice(2);
-console.log('myArgs: ', myArgs);
-
+const equivalents = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+var finalWords = [];
 
 /**
 * Function that converts one integer
 * @param  {integer} rawInt  integer to be converted
-* @return {String}          Phonetic equivalent
 */
 function integerToWord(rawInt) {
-
-
+  var completeWord = '';
+  while (rawInt != 0) {
+    completeWord = equivalents[rawInt % 10] + completeWord;
+    rawInt = Math.floor(rawInt/10);
+  }
+  finalWords.push(completeWord);
 }
 
-/**
-* Function that converts one digit
-* @param  {integer} rawDig  digit to be converted
-* @return {String}          Phonetic equivalent
-*/
-function digitToWork(rawDig) {
 
-}
+myArgs.forEach(integerToWord);
+process.stdout.write(finalWords.join(', '));
+console.log('');
