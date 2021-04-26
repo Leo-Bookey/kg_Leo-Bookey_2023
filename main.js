@@ -19,3 +19,12 @@ function integerToWord(rawInt) {
 
 
 }
+
+/**
+* Function that converts one digit
+* @param  {integer} rawDig  digit to be converted
+* @return {String}          Phonetic equivalent
+*/
+function digitToWork(rawDig) {
+
+}
